@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jobbsøknad – Helseassistent (tilkalling)</title>
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1d2433;--mute:#5d6678;--line:#d9dce3;--acc:#1f5f8b;--accink:#fff;--mark:#fff1a8;--markink:#5a4600;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171d;--card:#1d222b;--ink:#e8ebf1;--mute:#9aa3b5;--line:#343b49;--acc:#6bb2e0;--accink:#0c1722;--mark:#5a4a12;--markink:#ffe9a0}}
+:root[data-theme="dark"]{--bg:#14171d;--card:#1d222b;--ink:#e8ebf1;--mute:#9aa3b5;--line:#343b49;--acc:#6bb2e0;--accink:#0c1722;--mark:#5a4a12;--markink:#ffe9a0}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{padding:20px 20px 4px;max-width:1200px;margin:auto}
+h1{font-size:1.5rem;margin:0 0 4px}
+header p{margin:0;color:var(--mute)}
+main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;max-width:1200px;margin:auto;padding:16px 20px 40px}
+@media (max-width:860px){main{grid-template-columns:1fr}}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+h2{font-size:1.05rem;margin:0 0 10px;display:flex;gap:8px;align-items:center}
+h2 span{background:var(--acc);color:var(--accink);border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;flex:none}
+label{display:block;font-size:.85rem;color:var(--mute);margin:8px 0 2px}
+input,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+input:focus,textarea:focus{outline:2px solid var(--acc);outline-offset:1px}
+textarea{min-height:110px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:480px){.row{grid-template-columns:1fr}}
+.hint{font-size:.82rem;color:var(--mute);margin:6px 0 0}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 20px;border-bottom:1px solid var(--line)}
+.bar div{max-width:1200px;margin:auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+button{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 14px;border-radius:8px;cursor:pointer}
+button.primary{background:var(--acc);color:var(--accink);border-color:var(--acc);font-weight:600}
+#msg{font-size:.9rem;color:var(--mute)}
+.paper{background:#fff;color:#111;border:1px solid var(--line);border-radius:6px;padding:28px 30px;font:14.5px/1.5 Calibri,Carlito,"Segoe UI",sans-serif;position:sticky;top:70px;max-height:calc(100vh - 90px);overflow:auto}
+@media (max-width:860px){.paper{position:static;max-height:none}}
+.paper p{margin:0}
+.paper p.gap{margin-bottom:14px}
+.paper mark{background:#fff1a8;color:#5a4600;border-radius:3px;padding:0 2px}
+.paper h3{margin:0 0 10px;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#777}
+</style>
+</head>
+<body>
+<header>
+<h1>Jobbsøknad – helseassistent (tilkalling)</h1>
+<p>Fyll ut feltene. Søknaden til høyre oppdateres mens du skriver. Gule felt (i parentes) er ikke fylt ut ennå.</p>
+</header>
+<div class="bar"><div>
+<button class="primary" id="dl">⬇ Last ned som Word</button>
+<button id="cp">Kopier tekst</button>
+<button id="rs">Nullstill</button>
+<span id="msg"></span>
+</div></div>
+<main>
+<div>
+<section class="card"><h2><span>1</span>Personalia</h2>
+<label for="navn">Fornavn Etternavn</label><input id="navn" autocomplete="name">
+<label for="adr">Adresse</label><input id="adr" autocomplete="street-address">
+<label for="post">Postnummer og sted</label><input id="post">
+<div class="row"><div><label for="tlf">Telefonnummer</label><input id="tlf" type="tel"></div>
+<div><label for="epost">E-postadresse</label><input id="epost" type="email"></div></div>
+</section>
+
+<section class="card"><h2><span>2</span>Arbeidsgiver og stilling</h2>
+<label for="firma">Navn på bedrift</label><input id="firma">
+<label for="kontakt">Kontaktperson (hvis du vet)</label><input id="kontakt">
+<div class="row"><div><label for="fadr">Adresse</label><input id="fadr"></div>
+<div><label for="fpost">Postnummer og sted</label><input id="fpost"></div></div>
+<div class="row"><div><label for="dato">Dato</label><input id="dato" type="date" value="2026-11-16"></div>
+<div><label for="sted">Sted</label><input id="sted" value="Molde"></div></div>
+<label for="stilling">Stillingstittel</label><input id="stilling" value="helseassistent (tilkalling)">
+<label for="kilde">Hvor fant du annonsen?</label><input id="kilde" placeholder="f.eks. arbeidsplassen.no, Finn.no, Molde kommune">
+</section>
+
+<section class="card"><h2><span>3</span>Innledning</h2>
+<textarea id="t2" data-key="t2"></textarea>
+<p class="hint">{navn}, {stilling} og {kilde} fylles inn automatisk fra feltene over.</p></section>
+
+<section class="card"><h2><span>4</span>Om meg selv</h2>
+<textarea id="t3" data-key="t3"></textarea>
+<p class="hint">Skriv gjerne kort om familie hvis du vil. Se i annonsen hvilke egenskaper arbeidsgiver ber om, og bruk dem her.</p></section>
+
+<section class="card"><h2><span>5</span>Tidligere erfaring og utdanning</h2>
+<textarea id="t4" data-key="t4"></textarea></section>
+
+<section class="card"><h2><span>6</span>Hvorfor jeg passer til jobben</h2>
+<textarea id="t5" data-key="t5"></textarea></section>
+
+<section class="card"><h2><span>7</span>Avslutning</h2>
+<textarea id="t6" data-key="t6"></textarea></section>
+</div>
+
+<div><div class="paper" id="paper" aria-live="polite"></div></div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+var DEF={
+t2:"Jeg, {navn}, søker på stillingen som {stilling}. Jeg fant annonsen på {kilde}.",
+t3:"Jeg heter {navn}, og jeg (nåværende jobb eller aktivitet, f.eks. er nå deltaker på helseassistentkurs, norskkurs, Jobbsjansen, hjemmeværende, frivillig arbeid). Jeg kom til Norge i (årstall). Jeg er en positiv og motivert person som liker å lære nye ting. (Hvilke egenskaper spør arbeidsgiver etter i annonsen?)",
+t4:"Tidligere har jeg jobbet som (kort om tidligere jobber eller erfaringer). Jeg har erfaring med (relevante oppgaver eller ferdigheter). Jeg er utdannet som (utdanning).",
+t5:"Jeg tror jeg passer godt til denne jobben fordi jeg er (f.eks. pålitelig, samarbeidsvillig, lærevillig, omsorgsfull …). Jeg liker å jobbe med (arbeidsoppgaver), og jeg ønsker å bidra positivt på arbeidsplassen.",
+t6:"Helseassistentkurset har fokus på muntlig og skriftlig arbeidsnorsk, arbeidslivskunnskap, digitale ferdigheter og praksis ved enhet i helse, Molde/Vestnes kommune.\nJeg håper dere vil vurdere min søknad. Jeg kan komme på intervju når det passer dere.\nMed vennlig hilsen\n{navn}"
+};
+var $=function(i){return document.getElementById(i)};
+var msg=function(t){$('msg').textContent=t};
+function v(id,ph){var x=$(id).value.trim();return x||ph}
+function sub(t){
+  return t.replace(/\{navn\}/g,v('navn','(Fornavn Etternavn)'))
+   .replace(/\{stilling\}/g,v('stilling','(stillingstittel)'))
+   .replace(/\{kilde\}/g,v('kilde','(f.eks. arbeidsplassen.no, Finn.no, Molde kommune, ledige stillinger)'));
+}
+function fmtDate(){var d=$('dato').value;if(!d)return '(dato)';var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0]}
+function blocks(){
+  var b=[];
+  function line(t,gap,bold){b.push({t:t,gap:!!gap,b:!!bold})}
+  line(v('navn','(Fornavn Etternavn)'));
+  line(v('adr','(Adresse)'));
+  line(v('post','(Postnummer og sted)'));
+  line(v('tlf','(Telefonnummer)'));
+  line(v('epost','(E-postadresse)'),true);
+  line(v('firma','(Navn på bedrift)'));
+  line(v('kontakt','(Kontaktperson, hvis du vet)'));
+  line(v('fadr','(Adresse)'));
+  line(v('fpost','(Postnummer og sted)'),true);
+  line(v('sted','Molde')+', '+fmtDate(),true);
+  line('Søknad på stilling som '+v('stilling','(stillingstittel)'),true,true);
+  ['t2','t3','t4','t5','t6'].forEach(function(k){
+    var parts=sub($(k).value).split(/\n+/).filter(function(x){return x.trim()});
+    parts.forEach(function(p,i){line(p,i===parts.length-1||/^Med vennlig hilsen/.test(parts[i+1]||''))});
+  });
+  return b;
+}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function render(){
+  $('paper').innerHTML=blocks().map(function(x){
+    var h=esc(x.t).replace(/\([^()]*\)/g,function(m){return '<mark>'+m+'</mark>'});
+    if(x.b)h='<strong>'+h+'</strong>';
+    return '<p'+(x.gap?' class="gap"':'')+'>'+h+'</p>';
+  }).join('');
+}
+function plain(){
+  return blocks().map(function(x){return x.t+(x.gap?'\n':'')}).join('\n');
+}
+function docxBlob(){
+  var body=blocks().map(function(x){
+    return '<w:p><w:pPr><w:spacing w:after="'+(x.gap?240:0)+'" w:line="276" w:lineRule="auto"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/>'+(x.b?'<w:b/>':'')+'<w:sz w:val="22"/></w:rPr><w:t xml:space="preserve">'+esc(x.t)+'</w:t></w:r></w:p>';
+  }).join('');
+  var NS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"';
+  var z=new JSZip();
+  z.file('[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>');
+  z.file('_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>');
+  z.file('word/document.xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document '+NS+'><w:body>'+body+'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1417" w:right="1417" w:bottom="1417" w:left="1417" w:header="708" w:footer="708" w:gutter="0"/></w:sectPr></w:body></w:document>');
+  return z.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+}
+function fill(){Object.keys(DEF).forEach(function(k){$(k).value=DEF[k]})}
+var dls=null;
+$('dl').onclick=function(){
+  if(typeof JSZip==='undefined'){msg('Kunne ikke laste Word-verktøyet. Prøv å laste siden på nytt.');return}
+  var nm=($('navn').value.trim()||'Jobbsøknad').replace(/[^\p{L}\p{N} _-]/gu,'');
+  docxBlob().then(function(blob){
+    var fn='Jobbsøknad '+nm+'.docx';
+    if(dls)return dls.save({filename:fn,data:blob});
+    var u=URL.createObjectURL(blob),l=document.createElement('a');
+    l.href=u;l.download=fn;document.body.appendChild(l);l.click();l.remove();
+    setTimeout(function(){URL.revokeObjectURL(u)},4000);
+  }).then(function(){msg('Filen er lagret.')}).catch(function(e){
+    msg(e&&e.code==='declined'?'Nedlastingen ble avbrutt.':'Noe gikk galt. Prøv «Kopier tekst» i stedet.');
+  });
+};
+$('cp').onclick=function(){
+  var t=plain();
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){msg('Teksten er kopiert.')}).catch(function(){
+    var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();
+    try{document.execCommand('copy');msg('Teksten er kopiert.')}catch(e){msg('Kunne ikke kopiere.')}
+    a.remove();
+  });
+};
+$('rs').onclick=function(){
+  if(!confirm('Vil du tømme alle felt og starte på nytt?'))return;
+  document.querySelectorAll('input').forEach(function(i){i.value=''});
+  $('dato').value='2026-11-16';$('sted').value='Molde';$('stilling').value='helseassistent (tilkalling)';
+  fill();render();msg('');
+};
+
+document.addEventListener('input',render);
+fill();render();
+try{
+  window.claude&&claude.use('downloads').then(function(d){dls=d;if(!d)$('dl').title='Ikke tilgjengelig i denne visningen'}).catch(function(){});
+}catch(e){}
+</script>
+</body>
+</html>
