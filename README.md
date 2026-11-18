@@ -1,1 +1,1 @@
-Søknadsmal helseassistent. Funksjonalitet testet, nedlast til Word, nullstill OK.
+Søknadsmal helseassistent. Funksjonalitet testet, knapper nedlast til Word, kopier tekst,  nullstill OK.
